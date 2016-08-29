@@ -87,3 +87,9 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# folders with data about users
+/id*
+
+# secret parameters
+private.py
