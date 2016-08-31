@@ -60,7 +60,7 @@ def check_friends(vk_id):
     new_df.to_csv('id' + vk_id + '/old_friends.csv', index=None,
                   encoding='utf-8')
     if dif.size == 0:
-        return('No new friends')
+        return 'No new friends'
     result = ''
     for i in dif.index:
         item = dif.ix[i]
@@ -87,9 +87,8 @@ def check_followers(vk_id):
     new_df.to_csv('id' + vk_id + '/old_followers.csv', index=None,
                   encoding='utf-8')
     if dif.size == 0:
-        return('No new followers')
+        return 'No new followers'
     result = ''
-    print(dif)
     for i in dif.index:
         item = dif.ix[i]
         if new_df[new_df.uid == item.uid].size != 0:
@@ -108,6 +107,8 @@ def check_user(vk_id):
         pass
 
     last_result = check_friends(vk_id) + '\n' + check_followers(vk_id)
+    print(last_result)
+
     with open('id' + vk_id + '/last_result.txt', 'w') as lr:
         lr.write(last_result)
     with open('id' + vk_id + '/log.txt', 'a') as log:
@@ -117,6 +118,7 @@ def check_user(vk_id):
 
 def do_scrape(ids):
     for id in ids:
+        print('{} checking..'.format(id))
         check_user(id)
 
 
